@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        @font-face {
+            font-family:MiLan-Regular;
+            src:url('MI-Lan-Pro_Regular.ttf')  format('truetype');
+        }
+        html,body{
+            padding:0;
+            margin:0;
+            background:#f0f0f0;
+            box-sizing: border-box;
+            font-family:MiLan-Regular;
+        }
+        p{
+            padding:0;
+            margin:0;
+        }
+        .settingBox{
+            width:100%;
+            padding-bottom:40px;
+        }
+        .settingBoxs{
+            height: 0;
+            overflow: hidden;
+        }
+        .why{
+            height:30px;
+            line-height: 30px;
+            padding-left:20px;
+            font-size:16px;
+            color:#999;
+        }
+        .answer{
+            height:207px;
+            background:#fff;
+            padding:16px 20px 0 20px;
+            margin-bottom:12px;
+        }
+        .answer-icon{
+            width:55.5vw;
+            height: auto;
+            display: block;
+            margin:0 auto;
+        }
+        .answer-tip{
+            font-size:13px;
+            color:#999;
+        }
+        .switch-setting{
+            height:142px;
+            padding:0 20px;
+            background:#fff;
+        }
+        .switch-item{
+            height:71px;
+            margin:0 auto;
+            border-bottom:1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+        .switch-item:last-child{
+            border:none;
+        }
+        .switch-item-label-text{
+            font-size:16px;
+            color:#333;
+            line-height: 22px;
+        }
+        .switch-item-label-tip{
+            font-size:13px;
+            color:#999;
+            line-height: 17px;
+        }
+        .switch-icon{
+            width:44px; 
+            height:24px;
+        }
+        .handel-setting-title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height:30px;
+            padding:0 20px;
+            font-size:13px;
+            color:#999;
+        }
+        .handel-select-value{
+            display: flex;
+            align-items: center;
+        }
+        .select-icon{
+            width:12px;
+            height:8px;
+            display: block;
+            margin-left:4px;
+        }
+        .handel-setting{
+            background: #fff;
+            padding:0 20px;
+        }
+        .handel-setting-item{
+            padding:16px 0px;
+            border-bottom:1px solid #e5e5e5;
+        }
+        .handel-setting-item:last-child{
+            border:none;
+        }
+        .handel-setting-item-title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height:22px;
+        }
+        .handel-setting-item-label{
+            font-size:16px;
+            color:#333;
+        }
+        .handel-setting-goto{
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color:#0d84ff;
+        }
+        .setting-icon{
+            width:8px;
+            height:12px;
+            margin-left:8px;
+        }
+        .handel-setting-ul{
+            font-size:13px;
+            line-height: 20px;
+            color:#999;
+        }
+        .handel-setting-answer-info{
+            font-size:13px;
+            line-height: 20px;
+            color:#999;
+        }
+        .handel-setting-answer-none{
+            height:20px;
+        }
+        .dialog-box{
+            width:100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0,0,0,0.4);
+            left:0;
+            top:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dialog{
+            width:93%;
+            background:#fff;
+            border-radius: 12px;
+            padding: 24px 0 0 0;
+            margin:auto;
+           
+        }
+        .dialog-cont{
+            height:500px;
+            overflow-y: auto;
+        }
+        .dialog-title{
+            text-align: center;
+            font-size:16px;
+            line-height: 22px;
+            margin-bottom: 10px;
+        }
+        .dialog-btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom:20px;
+        }
+        .btn-cancel{
+            width:147px;
+            height:45px;
+            border-radius: 86px;
+            text-align: center;
+            line-height: 45px;
+            background:rgba(0,0,0,0.06);
+            margin-right:10px;
+            color: #333;
+            font-size:16px;
+        }
+        .btn-confirm{
+            width:147px;
+            height:45px;
+            border-radius: 86px;
+            text-align: center;
+            line-height: 45px;
+            background:#48A0DC;
+            margin-right:10px;
+            color: #fff;
+            font-size:16px;
+        }
+        .phone-list{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height:60px;
+            padding:0 35px;
+        }
+        .phone-type{
+            font-size:16px;
+            color:3333；
+        }
+        .phone-selcet{
+            width:22px;
+            height:22px;
+        }
+        .toast-box{
+            width:100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0,0,0,0.4);
+            left:0;
+            top:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .toast{
+            width:270px;
+            height:175px;
+            background:#fff;
+            border-radius:12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .toast-title{
+            font-size:16px;
+            color:#000;
+            text-align: center;
+            line-height: 22px;
+            padding:20px 0 10px 0;
+        }
+        .toast-cont{
+            width:230px;
+            font-size: 14px;
+            color:#666;
+            margin:0 auto;
+            text-align: center;
+        }
+        .toast-btn{
+            width:100%;
+            display: flex;
+            align-items: center;
+            height:45px;
+            position: absolute;
+            bottom:0;
+            left:0;
+            border-top:1px solid #d9d9d9;
+        }
+        .toast-btn-cancel{
+            width:50%;
+            text-align: center;
+            line-height: 45px;
+            color:#333;
+            font-size:16px;
+            border-right:1px solid #d9d9d9;
+        }
+        .toast-btn-confirm{
+            width:50%;
+            text-align: center;
+            line-height: 45px;
+            color:#F43F31;
+            font-size:16px;
+        }
+        .log{
+            background:#000;
+            color:#fff;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+    <div :class="[dialog?'settingBoxs':settingBox]" id="vue"   v-cloak >
+        <div class="why" >
+            为什么要开启后台运行权限？
+        </div>
+        <div class="answer" >
+            <img src="connect.png" alt="" class="answer-icon" >
+            <div class="answer-tip" >
+                <p>
+                    接收实时数据、消息通知等功能需要设备与APP应用保持连接。为了保证您能够实时收到血糖和消息提醒，请开启以下设置。
+                </p>
+                <p>
+                    *若手机中安装了第三方的安全类软件，则还需要将iHealth CGM加入其应用白名单。
+                </p>
+            </div>
+        </div>
+        
+        <div class="switch-setting">
+            <div class="switch-item switch-item"  @click="switchFront">
+                <div class="switch-item-label">
+                    <p class="switch-item-label-text">
+                        通知栏前台运行 (推荐)
+                    </p>
+                    <p class="switch-item-label-tip">
+                        允许前台运行可与设备保持更加稳定的连接
+                    </p>
+                </div>
+                <img src="switch.png" alt="" class="switch-icon " v-if="!frontSwitch" >
+                <img src="switch1.png" alt="" class="switch-icon " v-else>
+            </div>
+            <div class="switch-item switch-item"  @click="switchBattery">
+                <div class="switch-item-label">
+                    <p class="switch-item-label-text">
+                        忽略电池优化 (推荐)
+                    </p>
+                    <p class="switch-item-label-tip">
+                        加入电池优化白名单，以防系统省电设置误杀
+                    </p>
+                </div>
+                <img src="switch.png" alt="" class="switch-icon" v-if="!batterySwitch">
+                <img src="switch1.png" alt="" class="switch-icon " v-else>
+            </div>
+        </div>
+
+        <div class="handel-setting-title">
+            <div class="handel-setting-text">
+                以下需要手动设置
+            </div>
+            <div class="handel-select-value"  @click="dialog=true">
+                    {{phoneList[phoneIndex].type}}
+                    <img src="select-icon.png" alt="" class="select-icon" >
+            </div>
+        </div>
+
+        <div class="handel-setting"  v-if="firing.length>0" >
+           <div class="handel-setting-item">
+                <div class="handel-setting-item-title">
+                    <div class="handel-setting-item-label">
+                        自启动管理
+                    </div>
+                    <div class="handel-setting-goto"  @click="SetStartAutomatically" v-if="RnPhoneBrandIndex==phoneIndex" >
+                        前往设置
+                        <img src="setting-icon.png" alt="" class="setting-icon" >
+                    </div>
+                </div>
+                <div class="handel-setting-ul" >
+                    <p v-for="item in firing"  class="handel-setting-answer-info">{{item}}</p>
+                </div>
+           </div>
+           <div class="handel-setting-item"  v-if="battery.length>0" >
+                    <div class="handel-setting-item-title">
+                        <div class="handel-setting-item-label">
+                            电源管理
+                        </div>
+                        <div class="handel-setting-goto" @click="SetBattery" v-if="RnPhoneBrandIndex==phoneIndex">
+                            前往设置
+                            <img src="setting-icon.png" alt="" class="setting-icon" >
+                        </div>
+                    </div>
+                    <div class="handel-setting-ul" >
+                        <p v-for="item in battery"  class="handel-setting-answer-info">{{item}}</p>
+                    </div>
+            </div>
+            <div class="handel-setting-item"  v-if="lock.length>0">
+                <div class="handel-setting-item-title">
+                    <div class="handel-setting-item-label">
+                        锁定应用
+                    </div>
+                </div>
+                <div class="handel-setting-ul" >
+                        <p v-for="item in lock" :class="[item?'handel-setting-answer-info':'handel-setting-answer-none']">{{item}}</p>
+                </div>
+        </div>
+        </div>  
+        
+        <div class="dialog-box" v-if="dialog">
+            <div class="dialog" >
+                <div class="dialog-title" >请选择您的手机品牌</div>
+                <div class="dialog-cont" >
+                    <div class="phone-list" v-for="(item,index) in phoneList" @click="phoneChoose(index)" >
+                        <div class="phone-type" >{{item.type}}</div>
+                        <img src="radio-check.png" alt="" class="phone-selcet" v-if="item.select">
+                        <img src="radio.png" alt="" class="phone-selcet" v-else>
+                       
+                    </div>
+                </div>
+                <div class="dialog-btn" >
+                    <div class="btn-cancel" @click="cancel">取消</div>
+                    <div class="btn-confirm" @click="confirm">确定</div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-box"  v-if="toast">
+            <div class="toast" >
+                <div class="toast-title" >{{toastTitle}}</div>
+                <div class="toast-cont" >
+                    {{toastCont}}
+                </div>
+                <div class="toast-btn" >
+                    <div class='toast-btn-cancel' @click="toast=false">取消</div>
+                    <div class='toast-btn-confirm' @click="toastConfirm">确认</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="log" >打印内容：<br/>
+            <p  v-html ='log'></p>
+        </div> -->
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el:'#vue',
+        data:{
+            frontSwitch:0,
+            batterySwitch:0,
+            dialog:false,
+            toast:false,
+            toastTitle:'',
+            toastCont:'',
+            toastType:1, //1 前台运行 2电池优化
+            RnPhoneBrandIndex:-1,
+            c:'',
+            firing:[],
+            battery:[],
+            lock:[],
+            log:[],
+            phoneList:[
+                {
+                    type:'小米',
+                    phoneBrand:['xiaomi','redmi'],
+                    select:false,
+                    firing:['1.打开手机的“手机管家”，选择“应用管理>权限>自启动管理”；','2.找到“iHealth CGM”，打开“应用右侧开关”。'],
+                    battery:['1.打开手机的“手机管家”，选择“省电与电池> 设置>应用智能省电”;','2.找到“iHealth CGM”后点击进入，在后台配置中选择“无限制”。'],
+                    lock:['非全面屏或全面屏有导航按键的手机：',
+                        '1.点击屏幕下方的“三”三条杠(菜单键)，进入最近打开的程序页面；',
+                        '2.长按“iHealth CGM”，在“iHealth CGM”应用上方出现“锁”的标志即可。',
+                        '',
+                        '全面屏的手机：',
+                        '1. 在手机界面从下方缓慢的往上拉，进入最近打开的程序页面;',
+                        '2.长按“iHealth CGM”，在“iHealth CGM”应用上方出现”锁”的标志即可。']
+                },
+                {
+                    type:'红米',
+                    phoneBrand:['redmi'],
+                    select:false,
+                    firing:[
+                    '1.在最近打开的程序页面中锁定“iHealth CGM”应用；',
+                        '2.在“安全中心”或手机“设置”中找到“自启动管理”，找到“iHealth CGM”打开“自启动开关”;',
+                        '3.在“安全中心”或手机“设置”中将“iHealth CGM”加入“白名单”；',
+                        '4.若手机中安装了相关的应用休眠工具，如绿色守护、自启管家等应用，则需要将“iHealth CGM”从这些休眠应用列表中删除。'
+                    ],
+                    battery:[],
+                    lock:[]
+                },
+                {
+                    type:'荣耀',
+                    phoneBrand:['HONOR'],
+                    select:false,
+                    firing:[
+                    '1.在最近打开的程序页面中锁定“iHealth CGM”应用；',
+                        '2.在“安全中心”或手机“设置”中找到“自启动管理”，找到“iHealth CGM”打开“自启动开关”;',
+                        '3.在“安全中心”或手机“设置”中将“iHealth CGM”加入“白名单”；',
+                        '4.若手机中安装了相关的应用休眠工具，如绿色守护、自启管家等应用，则需要将“iHealth CGM”从这些休眠应用列表中删除。'
+                    ],
+                    battery:[],
+                    lock:[]
+                },
+                {
+                    type:'华为',
+                    phoneBrand:['huawei'],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“手机管家”，选择“应用启动管理”',
+                        '2.找到“iHealth CGM”，关闭“应用右侧开关”；',
+                        '3.弹出“手动管理”页面，将“允许自启动、允许关联启动、允许后台活动”全部勾选。'
+                    ],
+                    battery:[
+                        ' 1.打开手机的“设置”，选择“电池>耗电排行”；',
+                        '2.找到“iHealth CGM”，将“高耗电提醒”关闭。'
+                    ],
+                    lock:[
+                        '非全面屏或全面屏有导航按键的手机：',
+                        '1.点击屏幕下方的“口”正方形(菜单键)，进入最近打开的程序页面；',
+                        '2.向下滑动“iHealth CGM”或点击“锁”的标志，在“iHealth CGM”应用上方出现“锁”的标志即可。',
+                        '',
+                       ' 全面屏的手机：',
+                       ' 1.在手机界面从下方缓慢的往上拉，进入最近打开的程序页面；',
+                        '2.向下滑动“iHealth CGM”或点击“锁”的标志，在“iHealth CGM”应用上方出现“锁”的标志即可。',
+                        '',
+                        '*P10 等有“Home”键的手机，通常向左边或者右边滑动“Home”键会进入最近打开的程序页面，向下滑动“iHealth CGM”或点击“锁"”的标志，在“iHealth CGM”应用上方出现“锁”的标志即可。'
+                    ]
+                },
+                {
+                    type:'三星',
+                    phoneBrand:['samsung'],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“智能管理器(如桌面没有请尝试到 SamSung 文件夹里寻找)”，选择“自动运行应用程序”；',
+                        '2.找到“iHealth CGM”，打开应用右侧开关。'
+                    ],
+                    battery:[
+                        '1.打开智能管理器；',
+                        '2.选择电池，点击进入相应设置页；',
+                        '3.点击未监视的应用程序，找到“iHealth CGM”并点击进入；',
+                        '4.点击电池，找到并点击优化电池使用量；',
+                        '5.选择所有应用程序，找到“iHealth CGM”，并关闭开关。'
+                    ],
+                    lock:[
+                        '1.点击菜单键，进入最近打开的程序页面；',
+                        '2.找到“Zepp”，点击图标，在弹出的页面选择锁定此应用程序。',
+                        '',
+                        '*进入最近的程序页面，手机有“One Hand Operation”插件手机界面下方上划即可进入；如果底部有三个按键，点击屏幕下方的“三”三条杠(菜单键)即可进入。'
+                    ]
+                },
+                {
+                    type:'魅族',
+                    phoneBrand:[],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“手机管家”，选择“权限设置>后台管理”；',
+                        '2.找到“iHealth CGM”，设置为“允许后台运行”。      '
+                    ],
+                    battery:[],
+                    lock:[
+                        '1.在手机界面从下方缓慢的往上拉，进入最近打开的程序页面；',
+                        '2.找到“iHealth CGM”，下拉“iHealth CGM”后点击上方的“锁”的标志即可。'
+                    ]
+                },
+                {
+                    type:'OPPO',
+                    phoneBrand:['oppo'],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“手机管家”，选择“权限隐私 >自启动管理”；',
+                        '2.找到“iHealth CGM”，打开应用右侧开关。 '
+                    ],
+                    battery:[
+                        '1.打开手机的“设置”，选择“电池 >应用耗电管理”；',
+                        '2.找到“iHealth CGM”，打开“允许唤醒前台”和“允许完全后台行为”。'
+                    ],
+                    lock:[
+                        '非全面屏或全面屏有导航按键的手机：',
+                        '1.点击屏幕下方的“口”正方形(菜单键))，进入最近打开的程序页面；',
+                        '2.向下滑动“iHealth CGM”，点击“锁”的标志，在“iHealth CGM”应用上方出现"锁"的标志即可。',
+                        '',
+                        '全面屏的手机：',
+                        '1.在手机界面从下方缓慢的往上拉，进入最近打开的程序页面；',
+                        '2.点击“iHealth CGM”右上方“更多”按钮点击"锁定"，在“iHealth CGM”应用上方出现“锁”的标志即可。',
+                    ]
+                },
+                {
+                    type:'vivo',
+                    phoneBrand:['vivo'],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“设置”，选择“应用与权限>权限管理>权限>自启动”;',
+                        '2.找到“iHealth CGM”，打开应用右侧开关。  '  
+                    ],
+                    battery:[
+                        '1.打开手机的“设置”，选择“电池>后台高耗电”;',
+                        '2.找到“iHealth CGM”，打开“应用右侧开关”。'
+                    ],
+                    lock:[
+                        '非全面屏或全面屏有导航按键的手机：',
+                        '1.点击屏幕下方的“三”三条杠(菜单键)，进入最近打开的程序页面；',
+                        '2.向下滑动“iHealth CGM”，在“iHealth CGM”应用上方出现“锁”的标志即可。',
+                        '',
+                        '全面屏的手机：',
+                        '1.在手机界面从下方缓慢的往上拉，进入最近打开的程序页面；',
+                        '2.向下滑动“iHealth CGM”，在“iHealth CGM”应用上方出现“锁”的标志即可。'
+                    ]
+                },
+                {
+                    type:'乐视',
+                    phoneBrand:[],
+                    select:false,
+                    firing:[
+                        '1.打开系统设置，找到隐私授权；',
+                       ' 2.选择自启动管理；',
+                        '3.找到“iHealth CGM”，并打开开关。   '
+                    ],
+                    battery:[],
+                    lock:[]
+                },
+                {
+                    type:'锤子',
+                    phoneBrand:[],
+                    select:false,
+                    firing:[
+                        '1.打开手机的“设置”，选择“应用管理>权限管理>自启动权限管理”；',
+                        '2.找到“iHealth CGM”，打开“允许被系统启动”和“允许被第三方应用启动”。'
+                    ],
+                    battery:[
+                        '1.打开手机的“手机管理”，选择“省电优化>应用耗电优化”；',
+                        '2.找到“iHealth CGM”，关闭“应用右侧开关”。'
+                    ],
+                    lock:[
+                        '1.在手机界面从左下方缓慢的往上拉，进入最近打开的程序页面；',
+                       ' 2.找到“iHealth CGM”，长按“iHealth CGM”应用出现“钉子”标志即可。'
+                    ]
+                },
+                {
+                    type:'其他品牌',
+                    select:false,
+                    phoneBrand:[],
+                    firing:[
+                        '1.在最近打开的程序页面中锁定“iHealth CGM”应用；',
+                        '2.在“安全中心”或手机“设置”中找到“自启动管理”，找到“iHealth CGM”打开“自启动开关”;',
+                        '3.在“安全中心”或手机“设置”中将“iHealth CGM”加入“白名单”；',
+                        '4.若手机中安装了相关的应用休眠工具，如绿色守护、自启管家等应用，则需要将“iHealth CGM”从这些休眠应用列表中删除。'
+   
+                    ],
+                    battery:[],
+                    lock:[]
+                },
+            ]
+        },
+        created() {
+            this.phoneIndex = this.phoneList.length-1
+            this.phoneText()
+        },
+        mounted() {
+            let that = this
+            this.$nextTick(()=>{
+                window.addEventListener('message', function(e) {
+                    console.log(e)
+                    // that.setLog("接收到rn的消息:"+e.data)
+                    let data = JSON.parse(e.data)
+                    if(data.foreground){
+                        that.frontSwitch = data.foreground
+                    }
+                    if(data.batteryOptimization){
+                        that.batterySwitch = data.batteryOptimization
+                    }
+                    if(data.phoneBrand){
+                            let searchIndex = -1
+                            that.RnPhoneBrand = data.phoneBrand
+                            that.phoneList.forEach((item,index)=>{
+                                item.phoneBrand.forEach(val=>{
+                                    if(val.toLowerCase() == data.phoneBrand.toLowerCase()){
+                                        searchIndex = index
+                                    }
+                                })
+                            })
+                            that.RnPhoneBrandIndex =  searchIndex==-1?that.phoneList.length-1:searchIndex
+                            that.phoneIndex = searchIndex==-1?that.phoneList.length-1:searchIndex
+                            that.phoneText()
+                    }
+                },false)
+            })
+        },
+        methods: {
+            switchFront(){
+                if(this.frontSwitch){
+                    this.toastType = 1
+                    this.toast = true
+                    this.toastTitle='关闭通知栏前台运行'
+                    this.toastCont = '关闭后实时数据、消息通知等功能可能不稳定，将导致数据、消息通知接收不及时。确定关闭吗？'
+                }else{
+                    this.frontSwitch = 1
+                    this.sendData('Foreground',this.frontSwitch)
+                }
+            },
+            switchBattery(){
+                if(this.batterySwitch){
+                    this.toastType = 2
+                    this.toast = true
+                    this.toastTitle='关闭忽略电池优化'
+                    this.toastCont = '关闭后实时数据、消息通知等功能可能不稳定，将导致数据、消息通知接收不及时。确定关闭吗？'
+                }else{
+                    this.batterySwitch = 1
+                    this.sendData('BatteryOptimization',this.batterySwitch)
+                }
+            },
+            phoneChoose(index){
+                this.phoneList.map(item=>item.select = false)
+                this.phoneList[index].select = true
+                this.phoneIndex = index
+            },
+            // 手机型号选择弹窗取消
+            cancel(){
+                this.dialog = false
+            },
+            // 手机型号确定弹窗
+            confirm(){
+                this.dialog = false
+                this.phoneText()
+            },
+            // 弹窗
+            toastConfirm(){
+                this.toast = false
+                if(this.toastType==1){
+                    this.frontSwitch = 0
+                    this.sendData('Foreground',this.frontSwitch)
+                }else{
+                    this.batterySwitch = 0
+                    this.sendData('BatteryOptimization',this.batterySwitch)
+                }
+            },
+            // 手机品牌文案对应
+            phoneText(){
+                let index = this.phoneIndex
+                this.firing = this.phoneList[index].firing
+                this.battery = this.phoneList[index].battery
+                this.lock = this.phoneList[index].lock
+                this.phoneList.map(item=>item.select = false)
+                this.phoneList[index].select = true
+            },
+            // 设置自启动
+            SetStartAutomatically(){
+                this.sendData('SetStartAutomatically')
+            },
+            // 设置电源
+            SetBattery(){
+                this.sendData('SetBattery')
+            },
+            // 给rn发送消息
+            sendData(key,value){
+                let obj = {key:'',value:''}
+                switch(key){
+                    case 'Foreground':
+                        obj.key = 'Foreground'
+                        obj.value = value
+                        break;
+                    case 'BatteryOptimization':
+                        obj.key = 'BatteryOptimization'
+                        obj.value = value
+                        break;
+                    case 'SetStartAutomatically':
+                        obj.key = 'SetStartAutomatically'
+                        break;
+                    case 'SetBattery':
+                        obj.key = 'SetBattery'
+                        break;
+                }
+                // this.setLog("发送给rn的消息:"+JSON.stringify(obj))
+                // window.postMessage(JSON.stringify(obj))
+                window.ReactNativeWebView.postMessage(JSON.stringify(obj))
+            },
+            // 打印消息
+            setLog(text){
+                const content = this.formatTime() + " " +text
+                this.log += content
+                this.log += "<br/>"
+            },
+         
+            formatTime() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                const milliseconds = now.getMilliseconds().toString().padStart(3, '0');
+                return `${hours}:${minutes}:${seconds}`;
+            },
+        }
+    })
+</script>
+</html>
