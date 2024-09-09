@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .question{
+            background:#fff;
+        }
+        .question-list{
+            margin:0 20px;
+            border-bottom:1px solid #e5e5e5;
+            overflow: hidden;
+        }
+        .question-list:last-child{
+            border:none;
+        }
+        .question-label{
+            color:#333;
+            padding:20px 0;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .more-icon{
+            width:8px;
+            height: auto;
+            margin-left:10px;
+        }
+        .more-icons{
+            transform: rotate(90deg);
+        }
+        .answer{
+            color:#666;
+            overflow: hidden;
+            height: 0;
+            padding-bottom:0;
+            transition: all 0.1s linear;
+        }
+        .answer.open{
+            height: auto;
+            padding-bottom:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="question"  id="vue"  :class="'font-'+fontSize+'-16'">
+        <div class="question-list" v-for="(item,index) in list" :key="index" @click="tab(index)">
+            <div class="question-label" >
+                <p>{{item.question}}</p>
+                <img src="img/more-icon.png" alt="" :class="[item.checked?'more-icons':'','more-icon']" >
+            </div>
+            <div :class="[item.checked?'open':'','answer']"  :class="'font-'+fontSize+'-14'">
+                {{item.answer}}
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+         new Vue({
+            el:'#vue',
+            data:{
+                fontSize:'default',
+                list:[{
+                    question:'CGM多长时间测一次？',
+                    answer:'激活后最长可使用 15天。',
+                    checked:false
+                },{
+                    question:'CGM能用多长时间?',
+                    answer:'1分钟测一次。',
+                    checked:false
+                },{
+                    question:'产品需要扫描或校准吗?',
+                    answer:'无需扫描，无需校准。',
+                    checked:false
+                },{
+                    question:'产品可以佩戴在什么位置?',
+                    answer:'上臂侧后方，避开肌肉组织和疤痕位置。正确的佩戴位置有助于得到更好的佩戴体验和数据准确度。',
+                    checked:false
+                },{
+                    question:'产品支持什么手机使用?',
+                    answer:'1分苹果手机需要 ios13 及以上的安装环境，安卓手机需要Android5.0 及以上的安装环境。钟测一次。',
+                    checked:false
+                },{
+                    question:'佩戴期间可以洗澡和游泳吗?',
+                    answer:'传感器为IP68防尘防水，佩戴期间可正常淋浴和游泳。',
+                    checked:false
+                },{
+                    question:'提示蓝牙断开连接怎么办?',
+                    answer:'受环境干扰时蓝牙会短暂断开，干扰结束后蓝牙自动恢复连接，断连时存储的血糖数据将自动上传。',
+                    checked:false
+                }]
+            },
+            methods: {
+                tab(index){
+                    let list = this.list
+                    list[index].checked = !list[index].checked
+                }
+            },
+            mounted(){
+                let that = this
+                this.$nextTick(()=>{
+                    window.addEventListener('message', function(e) {
+                        console.log(e)
+                        // that.setLog("接收到rn的消息:"+e.data)
+                        let data = JSON.parse(e.data)
+                        if(data.fontSize){
+                            if(data.fontSize==1){
+                                that.fontSize = 'default'
+                            }else if(data.fontSize==1.28){
+                                that.fontSize = 'two'
+                            }else if(data.fontSize==1.57){
+                                that.fontSize = 'three'
+                            }else if(data.fontSize==2.1){
+                                that.fontSize = 'four'
+                            }
+                        }
+                    },false)
+                })
+            },
+         })
+    </script>
+</body>
+</html>

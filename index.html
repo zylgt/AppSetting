@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Document</title>
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div :class="[dialog?'settingBoxs':settingBox,'font-'+fontSize+'-16']" id="vue"   v-cloak >
@@ -22,8 +22,8 @@
                         允许前台运行可与设备保持更加稳定的连接
                     </p>
                 </div>
-                <img src="switch.png" alt="" class="switch-icon " v-if="!frontSwitch" >
-                <img src="switch1.png" alt="" class="switch-icon " v-else>
+                <img src="img/switch.png" alt="" class="switch-icon " v-if="!frontSwitch" >
+                <img src="img/switch1.png" alt="" class="switch-icon " v-else>
             </div>
             <div class="switch-item switch-item"  @click="switchBattery">
                 <div class="switch-item-label">
@@ -34,8 +34,8 @@
                         加入电池优化白名单，以防系统省电设置误杀
                     </p>
                 </div>
-                <img src="switch.png" alt="" class="switch-icon" v-if="!batterySwitch">
-                <img src="switch1.png" alt="" class="switch-icon " v-else>
+                <img src="img/switch.png" alt="" class="switch-icon" v-if="!batterySwitch">
+                <img src="img/switch1.png" alt="" class="switch-icon " v-else>
             </div>
             <div class="handel-setting-item">
                 <div class="handel-setting-item-title">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="handel-setting-goto" :class="'font-'+fontSize+'-14'" @click="SetStartAutomatically" >
                         前往设置
-                        <img src="setting-icon.png" alt="" class="setting-icon" >
+                        <img src="img/setting-icon.png" alt="" class="setting-icon" >
                     </div>
                 </div>
                  <p class="switch-item-label-tip " :class="'font-'+fontSize+'-13'">
@@ -58,14 +58,14 @@
                 <div class="lock-title" :class="'font-'+fontSize+'-14'">非全面屏或全面屏有导航按键的手机</div>
                 <div class="lock-info" :class="'font-'+fontSize+'-14'">
                     <p>1.点击屏幕下方的“<img src="icon1.png" alt="" class="info-icon" >”菜单键；</p>
-                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="icon2.png" alt="" class="info-icon" >”的标志即可。</p>
-                    <img src="lock-img1.png" alt="" class="lock-img" >
+                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="img/icon2.png" alt="" class="info-icon" >”的标志即可。</p>
+                    <img src="img/lock-img1.png" alt="" class="lock-img" >
                 </div>
                  <div class="lock-title "  :class="'font-'+fontSize+'-14'">全面屏的手机</div>
                 <div class="lock-info "  :class="'font-'+fontSize+'-14'">
                     <p>1. 在手机界面从下方缓慢的往上拉，进入最近打开的程序页面;</p>
-                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="icon2.png" alt="" class="info-icon" >”的标志即可。</p>
-                    <img src="lock-img2.png" alt="" class="lock-img" >
+                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="img/icon2.png" alt="" class="info-icon" >”的标志即可。</p>
+                    <img src="img/lock-img2.png" alt="" class="lock-img" >
                 </div>
             </div>
         </div>
@@ -77,8 +77,8 @@
                 <div class="dialog-cont" >
                     <div class="phone-list" v-for="(item,index) in phoneList" @click="phoneChoose(index)" >
                         <div class="phone-type" >{{item.type}}</div>
-                        <img src="radio-check.png" alt="" class="phone-selcet" v-if="item.select">
-                        <img src="radio.png" alt="" class="phone-selcet" v-else>
+                        <img src="img/radio-check.png" alt="" class="phone-selcet" v-if="item.select">
+                        <img src="img/radio.png" alt="" class="phone-selcet" v-else>
                        
                     </div>
                 </div>
@@ -105,7 +105,7 @@
         </div> -->
     </div>
 </body>
-<script src="vue.js"></script>
+<script src="js/vue.js"></script>
 
 <script>
     new Vue({

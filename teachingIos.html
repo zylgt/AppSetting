@@ -29,6 +29,9 @@
             color: #0D84FF;
             padding-bottom:30px;
         }
+        .teaching-tips{
+            color:#999;
+        }
     </style>
 </head>
 <body>
@@ -37,15 +40,17 @@
             如果您无法收到提醒通知，请按照以下指引检查手机的设置。
         </div>
         <p class="switch-item-label-text">1.请确保开启“通知使用权限”</p>
-        <div class="lock-title" :class="'font-'+fontSize+'-14'">在手机设置中，打开andon CGM 应用程序的“通知使用权限”开关打开手机设置中，搜索“通知使用权限”找到andon CGM应用程序，并开启开关。</div>
+        <div class="lock-title" :class="'font-'+fontSize+'-14'">在手机设置中，打开九安 CGM 应用程序的“通知使用权限”开关打开手机设置中，搜索“通知使用权限”找到九安 CGM应用程序，并开启开关。</div>
         <div class="lock-info" :class="'font-'+fontSize+'-14'">(若该开关已开启，请尝试重新打开该开关。)</div>
-        <img src="img/teaching-img1.png" alt="" class="teaching-img" >
+        <img src="img/ios1.png" alt="" class="teaching-img" >
         <p class="switch-item-label-text">2.请确保手机未开启“勿扰模式”</p>
         <div class="lock-title" :class="'font-'+fontSize+'-14'">请下划呼出控制中心，确认“勿扰模式”未开启。</div>
-        <img src="img/teaching-img2.png" alt="" class="teaching-img" >
+        <img src="img/ios2.png" alt="" class="teaching-img" >
+        <div class="teaching-tips"  :class="'font-'+fontSize+'-14'">若开启勿扰模式，请确保加入“勿扰模式”白名单</div>
+        <img src="img/ios3.png" alt="" class="teaching-img" >
         <p class="switch-item-label-text">3.请确保开启后台运行权限</p>
         <div class="lock-title" :class="'font-'+fontSize+'-14'">请开启后台运行权限，以确保APP在后台持续运行。</div>
-        <img src="img/teaching-img3.png" alt="" class="teaching-img" >
+        <img src="img/ios4.png" alt="" class="teaching-img" >
         <p class="switch-item-label-text">4.问题依然未解决</p>
         <div class="teaching-return" :class="'font-'+fontSize+'-14'" @click="back" >请点击此处进行反馈</div>
     </div>

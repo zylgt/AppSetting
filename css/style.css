@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family:MiLan-Regular;
-    src:url('MI-Lan-Pro_Regular.ttf')  format('truetype');
+    src:url('font/MI-Lan-Pro_Regular.ttf')  format('truetype');
 }
 html,body{
     padding:0;
