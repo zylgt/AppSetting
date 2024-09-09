@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background: #ffffff;
+        }
+        .why{
+            padding:12px 0;
+        }
+        #vue{
+            padding:0 20px;
+        }
+        .lock-title{
+            padding:4px 0;
+        }
+        .teaching-img{
+            width:240px;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+        }
+        .teaching-return{
+            color: #0D84FF;
+            padding-bottom:30px;
+        }
+    </style>
+</head>
+<body>
+    <div  id="vue"  :class="'font-'+fontSize+'-16'">
+        <div class="why"  :class="'font-'+fontSize+'-14'" >
+            如果您无法收到提醒通知，请按照以下指引检查手机的设置。
+        </div>
+        <p class="switch-item-label-text">1.请确保开启“通知使用权限”</p>
+        <div class="lock-title" :class="'font-'+fontSize+'-14'">在手机设置中，打开andon CGM 应用程序的“通知使用权限”开关打开手机设置中，搜索“通知使用权限”找到andon CGM应用程序，并开启开关。</div>
+        <div class="lock-info" :class="'font-'+fontSize+'-14'">(若该开关已开启，请尝试重新打开该开关。)</div>
+        <img src="teaching-img1.png" alt="" class="teaching-img" >
+        <p class="switch-item-label-text">2.请确保手机未开启“勿扰模式”</p>
+        <div class="lock-title" :class="'font-'+fontSize+'-14'">请下划呼出控制中心，确认“勿扰模式”未开启。</div>
+        <img src="teaching-img2.png" alt="" class="teaching-img" >
+        <p class="switch-item-label-text">3.请确保开启后台运行权限</p>
+        <div class="lock-title" :class="'font-'+fontSize+'-14'">请开启后台运行权限，以确保APP在后台持续运行。</div>
+        <img src="teaching-img3.png" alt="" class="teaching-img" >
+        <p class="switch-item-label-text">4.问题依然未解决</p>
+        <div class="teaching-return" :class="'font-'+fontSize+'-14'" @click="back" >请点击此处进行反馈</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:'#vue',
+            data:{
+                fontSize:'default',
+            },
+            mounted(){
+                let that = this
+            this.$nextTick(()=>{
+                window.addEventListener('message', function(e) {
+                    console.log(e)
+                    // that.setLog("接收到rn的消息:"+e.data)
+                    let data = JSON.parse(e.data)
+                    if(data.fontSize){
+                        if(data.fontSize==1){
+                            that.fontSize = 'default'
+                        }else if(data.fontSize==1.28){
+                            that.fontSize = 'two'
+                        }else if(data.fontSize==1.57){
+                            that.fontSize = 'three'
+                        }else if(data.fontSize==2.1){
+                            that.fontSize = 'four'
+                        }
+                    }
+                },false)
+            })
+            },
+            methods: {
+                back(){
+                    let obj = {key:'FeedBack'}
+                    window.ReactNativeWebView.postMessage(JSON.stringify(obj))
+                }
+            },
+        })
+    </script>
+</body>
+</html>

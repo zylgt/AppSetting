@@ -5,312 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Document</title>
-    <style>
-        [v-cloak] {
-            display: none;
-        }
-        @font-face {
-            font-family:MiLan-Regular;
-            src:url('MI-Lan-Pro_Regular.ttf')  format('truetype');
-        }
-        html,body{
-            padding:0;
-            margin:0;
-            background:#f0f0f0;
-            box-sizing: border-box;
-            font-family:MiLan-Regular;
-        }
-        p{
-            padding:0;
-            margin:0;
-        }
-        .settingBox{
-            width:100%;
-            padding-bottom:40px;
-        }
-        .settingBoxs{
-            height: 0;
-            overflow: hidden;
-        }
-        .why{
-            height:30px;
-            line-height: 30px;
-            padding-left:20px;
-            font-size:16px;
-            color:#999;
-        }
-        .answer{
-            height:207px;
-            background:#fff;
-            padding:16px 20px 0 20px;
-            margin-bottom:12px;
-        }
-        .answer-icon{
-            width:55.5vw;
-            height: auto;
-            display: block;
-            margin:0 auto;
-        }
-        .answer-tip{
-            font-size:13px;
-            color:#999;
-        }
-        .switch-setting{
-            height:142px;
-            padding:0 20px;
-            background:#fff;
-        }
-        .switch-item{
-            height:71px;
-            margin:0 auto;
-            border-bottom:1px solid #e5e5e5;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-        }
-        .switch-item:last-child{
-            border:none;
-        }
-        .switch-item-label-text{
-            font-size:16px;
-            color:#333;
-            line-height: 22px;
-        }
-        .switch-item-label-tip{
-            font-size:13px;
-            color:#999;
-            line-height: 17px;
-        }
-        .switch-icon{
-            width:44px; 
-            height:24px;
-        }
-        .handel-setting-title{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height:30px;
-            padding:0 20px;
-            font-size:13px;
-            color:#999;
-        }
-        .handel-select-value{
-            display: flex;
-            align-items: center;
-        }
-        .select-icon{
-            width:12px;
-            height:8px;
-            display: block;
-            margin-left:4px;
-        }
-        .handel-setting{
-            background: #fff;
-            padding:0 20px;
-        }
-        .handel-setting-item{
-            padding:16px 0px;
-            border-bottom:1px solid #e5e5e5;
-        }
-        .handel-setting-item:last-child{
-            border:none;
-        }
-        .handel-setting-item-title{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height:22px;
-        }
-        .handel-setting-item-label{
-            font-size:16px;
-            color:#333;
-        }
-        .handel-setting-goto{
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color:#0d84ff;
-        }
-        .setting-icon{
-            width:8px;
-            height:12px;
-            margin-left:8px;
-        }
-        .handel-setting-ul{
-            font-size:13px;
-            line-height: 20px;
-            color:#999;
-        }
-        .handel-setting-answer-info{
-            font-size:13px;
-            line-height: 20px;
-            color:#999;
-        }
-        .handel-setting-answer-none{
-            height:20px;
-        }
-        .dialog-box{
-            width:100%;
-            height: 100%;
-            position: fixed;
-            background: rgba(0,0,0,0.4);
-            left:0;
-            top:0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .dialog{
-            width:93%;
-            background:#fff;
-            border-radius: 12px;
-            padding: 24px 0 0 0;
-            margin:auto;
-           
-        }
-        .dialog-cont{
-            height:500px;
-            overflow-y: auto;
-        }
-        .dialog-title{
-            text-align: center;
-            font-size:16px;
-            line-height: 22px;
-            margin-bottom: 10px;
-        }
-        .dialog-btn{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom:20px;
-        }
-        .btn-cancel{
-            width:147px;
-            height:45px;
-            border-radius: 86px;
-            text-align: center;
-            line-height: 45px;
-            background:rgba(0,0,0,0.06);
-            margin-right:10px;
-            color: #333;
-            font-size:16px;
-        }
-        .btn-confirm{
-            width:147px;
-            height:45px;
-            border-radius: 86px;
-            text-align: center;
-            line-height: 45px;
-            background:#48A0DC;
-            margin-right:10px;
-            color: #fff;
-            font-size:16px;
-        }
-        .phone-list{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height:60px;
-            padding:0 35px;
-        }
-        .phone-type{
-            font-size:16px;
-            color:3333；
-        }
-        .phone-selcet{
-            width:22px;
-            height:22px;
-        }
-        .toast-box{
-            width:100%;
-            height: 100%;
-            position: fixed;
-            background: rgba(0,0,0,0.4);
-            left:0;
-            top:0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .toast{
-            width:270px;
-            height:175px;
-            background:#fff;
-            border-radius:12px;
-            overflow: hidden;
-            position: relative;
-        }
-        .toast-title{
-            font-size:16px;
-            color:#000;
-            text-align: center;
-            line-height: 22px;
-            padding:20px 0 10px 0;
-        }
-        .toast-cont{
-            width:230px;
-            font-size: 14px;
-            color:#666;
-            margin:0 auto;
-            text-align: center;
-        }
-        .toast-btn{
-            width:100%;
-            display: flex;
-            align-items: center;
-            height:45px;
-            position: absolute;
-            bottom:0;
-            left:0;
-            border-top:1px solid #d9d9d9;
-        }
-        .toast-btn-cancel{
-            width:50%;
-            text-align: center;
-            line-height: 45px;
-            color:#333;
-            font-size:16px;
-            border-right:1px solid #d9d9d9;
-        }
-        .toast-btn-confirm{
-            width:50%;
-            text-align: center;
-            line-height: 45px;
-            color:#F43F31;
-            font-size:16px;
-        }
-        .log{
-            background:#000;
-            color:#fff;
-            padding:20px;
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div :class="[dialog?'settingBoxs':settingBox]" id="vue"   v-cloak >
-        <div class="why" >
-            为什么要开启后台运行权限？
+    <div :class="[dialog?'settingBoxs':settingBox,'font-'+fontSize+'-16']" id="vue"   v-cloak >
+        <div class="why " :class="'font-'+fontSize+'-14'" >
+            系统可能会自动关闭APP，为了保证能够实时收到血糖数据和消息提醒，请开启以下设置。
         </div>
-        <div class="answer" >
-            <img src="connect.png" alt="" class="answer-icon" >
-            <div class="answer-tip" >
-                <p>
-                    接收实时数据、消息通知等功能需要设备与APP应用保持连接。为了保证您能够实时收到血糖和消息提醒，请开启以下设置。
-                </p>
-                <p>
-                    *若手机中安装了第三方的安全类软件，则还需要将iHealth CGM加入其应用白名单。
-                </p>
-            </div>
-        </div>
-        
         <div class="switch-setting">
             <div class="switch-item switch-item"  @click="switchFront">
                 <div class="switch-item-label">
                     <p class="switch-item-label-text">
-                        通知栏前台运行 (推荐)
+                        通知栏前台运行 
                     </p>
-                    <p class="switch-item-label-tip">
+                    <p :class="'font-'+fontSize+'-13'" class="switch-item-label-tip">
                         允许前台运行可与设备保持更加稳定的连接
                     </p>
                 </div>
@@ -320,67 +28,48 @@
             <div class="switch-item switch-item"  @click="switchBattery">
                 <div class="switch-item-label">
                     <p class="switch-item-label-text">
-                        忽略电池优化 (推荐)
+                        忽略电池优化 
                     </p>
-                    <p class="switch-item-label-tip">
+                    <p class="switch-item-label-tip" :class="'font-'+fontSize+'-13'" >
                         加入电池优化白名单，以防系统省电设置误杀
                     </p>
                 </div>
                 <img src="switch.png" alt="" class="switch-icon" v-if="!batterySwitch">
                 <img src="switch1.png" alt="" class="switch-icon " v-else>
             </div>
-        </div>
-
-        <div class="handel-setting-title">
-            <div class="handel-setting-text">
-                以下需要手动设置
-            </div>
-            <div class="handel-select-value"  @click="dialog=true">
-                    {{phoneList[phoneIndex].type}}
-                    <img src="select-icon.png" alt="" class="select-icon" >
-            </div>
-        </div>
-
-        <div class="handel-setting"  v-if="firing.length>0" >
-           <div class="handel-setting-item">
+            <div class="handel-setting-item">
                 <div class="handel-setting-item-title">
                     <div class="handel-setting-item-label">
                         自启动管理
                     </div>
-                    <div class="handel-setting-goto"  @click="SetStartAutomatically" v-if="RnPhoneBrandIndex==phoneIndex" >
+                    <div class="handel-setting-goto" :class="'font-'+fontSize+'-14'" @click="SetStartAutomatically" >
                         前往设置
                         <img src="setting-icon.png" alt="" class="setting-icon" >
                     </div>
                 </div>
-                <div class="handel-setting-ul" >
-                    <p v-for="item in firing"  class="handel-setting-answer-info">{{item}}</p>
-                </div>
-           </div>
-           <div class="handel-setting-item"  v-if="battery.length>0" >
-                    <div class="handel-setting-item-title">
-                        <div class="handel-setting-item-label">
-                            电源管理
-                        </div>
-                        <div class="handel-setting-goto" @click="SetBattery" v-if="RnPhoneBrandIndex==phoneIndex">
-                            前往设置
-                            <img src="setting-icon.png" alt="" class="setting-icon" >
-                        </div>
-                    </div>
-                    <div class="handel-setting-ul" >
-                        <p v-for="item in battery"  class="handel-setting-answer-info">{{item}}</p>
-                    </div>
+                 <p class="switch-item-label-tip " :class="'font-'+fontSize+'-13'">
+                   开启自启动管理，APP可在后台持续运行
+                </p>
             </div>
-            <div class="handel-setting-item"  v-if="lock.length>0">
-                <div class="handel-setting-item-title">
-                    <div class="handel-setting-item-label">
-                        锁定应用
-                    </div>
+            <div class="handel-setting-item" >
+                <p class="switch-item-label-text">
+                    锁定应用 (推荐)
+                </p>
+                <div class="lock-title" :class="'font-'+fontSize+'-14'">非全面屏或全面屏有导航按键的手机</div>
+                <div class="lock-info" :class="'font-'+fontSize+'-14'">
+                    <p>1.点击屏幕下方的“<img src="icon1.png" alt="" class="info-icon" >”菜单键；</p>
+                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="icon2.png" alt="" class="info-icon" >”的标志即可。</p>
+                    <img src="lock-img1.png" alt="" class="lock-img" >
                 </div>
-                <div class="handel-setting-ul" >
-                        <p v-for="item in lock" :class="[item?'handel-setting-answer-info':'handel-setting-answer-none']">{{item}}</p>
+                 <div class="lock-title "  :class="'font-'+fontSize+'-14'">全面屏的手机</div>
+                <div class="lock-info "  :class="'font-'+fontSize+'-14'">
+                    <p>1. 在手机界面从下方缓慢的往上拉，进入最近打开的程序页面;</p>
+                    <p>2.长按“andon CGM”，在“andon CGM”应用上方出现 “<img src="icon2.png" alt="" class="info-icon" >”的标志即可。</p>
+                    <img src="lock-img2.png" alt="" class="lock-img" >
                 </div>
+            </div>
         </div>
-        </div>  
+       
         
         <div class="dialog-box" v-if="dialog">
             <div class="dialog" >
@@ -401,13 +90,13 @@
         </div>
         <div class="toast-box"  v-if="toast">
             <div class="toast" >
-                <div class="toast-title" >{{toastTitle}}</div>
-                <div class="toast-cont" >
+                <div class="toast-title"  :class="'font-'+fontSize+'-16'">{{toastTitle}}</div>
+                <div class="toast-cont "   :class="'font-'+fontSize+'-14'">
                     {{toastCont}}
                 </div>
                 <div class="toast-btn" >
-                    <div class='toast-btn-cancel' @click="toast=false">取消</div>
-                    <div class='toast-btn-confirm' @click="toastConfirm">确认</div>
+                    <div class='toast-btn-cancel' :class="'font-'+fontSize+'-16'" @click="toast=false">取消</div>
+                    <div class='toast-btn-confirm' :class="'font-'+fontSize+'-16'" @click="toastConfirm">确认</div>
                 </div>
             </div>
         </div>
@@ -426,8 +115,8 @@
             batterySwitch:0,
             dialog:false,
             toast:false,
-            toastTitle:'',
-            toastCont:'',
+            toastTitle:'关闭通知栏前台运行',
+            toastCont:'关闭后实时数据、消息通知等功能可能不稳定，将导致数据、消息通知接收不及时。确定关闭吗？',
             toastType:1, //1 前台运行 2电池优化
             RnPhoneBrandIndex:-1,
             c:'',
@@ -435,6 +124,7 @@
             battery:[],
             lock:[],
             log:[],
+            fontSize:'default',
             phoneList:[
                 {
                     type:'小米',
@@ -627,8 +317,8 @@
             ]
         },
         created() {
-            this.phoneIndex = this.phoneList.length-1
-            this.phoneText()
+            // this.phoneIndex = this.phoneList.length-1
+            // this.phoneText()
         },
         mounted() {
             let that = this
@@ -656,6 +346,17 @@
                             that.RnPhoneBrandIndex =  searchIndex==-1?that.phoneList.length-1:searchIndex
                             that.phoneIndex = searchIndex==-1?that.phoneList.length-1:searchIndex
                             that.phoneText()
+                    }
+                    if(data.fontSize){
+                        if(data.fontSize==1){
+                            that.fontSize = 'default'
+                        }else if(data.fontSize==1.28){
+                            that.fontSize = 'two'
+                        }else if(data.fontSize==1.57){
+                            that.fontSize = 'three'
+                        }else if(data.fontSize==2.1){
+                            that.fontSize = 'four'
+                        }
                     }
                 },false)
             })
