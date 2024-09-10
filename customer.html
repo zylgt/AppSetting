@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .custom{
+            background: #fff;
+            padding:20px;
+            font-size:16px;
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom" >
+        客服热线：400-626-3881/400-611-0208<br/> 在线时间：09：00-18：00（周一到周日 法定假期除外）
+    </div>
+    <script>
+        function paramsValue(paramName){
+                const searchUrl =  window.location.search.split('?')[1]
+                const searchParams = searchUrl.split('&');
+                const paramsObj = {};
+                searchParams.forEach(param => {
+                    const [key, value] = param.split('=');
+                    paramsObj[key] = value;
+                });
+                const paramValue = paramsObj[paramName];
+                console.log(paramValue)
+                var custom = document.getElementsByClassName('custom')[0]
+
+                custom.style.fontSize='calc(16px*'+paramValue+')'
+            }
+            paramsValue('fontSize')
+    </script>
+</body>
+</html>

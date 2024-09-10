@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,body{
+            background: #fff;
+            height: 100%;
+        }
+        .agreement-cont .item{
+            margin-bottom:8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="agreement-box" >
+        <div class="agreement-title" >权限解释</div>
+        <div class="agreement-cont " >不知道内容，占位</p>
+        </div>
+    </div>
+    <script>
+            function paramsValue(paramName){
+                const searchUrl =  window.location.search.split('?')[1]
+                const searchParams = searchUrl.split('&');
+                const paramsObj = {};
+                searchParams.forEach(param => {
+                    const [key, value] = param.split('=');
+                    paramsObj[key] = value;
+                });
+                const paramValue = paramsObj[paramName];
+                console.log(paramValue)
+                var title = document.getElementsByClassName('agreement-title')[0]
+                var cont = document.getElementsByClassName('agreement-cont')[0]
+
+                title.style.fontSize='calc(16px*'+paramValue+')'
+                cont.style.fontSize='calc(14px*'+paramValue+')'
+            }
+            paramsValue('fontSize')
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,body{
+            background: #fff;
+            height: 100%;
+        }
+        .agreement-cont .item{
+            margin-bottom:8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="agreement-box" >
+        <div class="agreement-title" >扫描不到要添加的设备怎么办？</div>
+        <div class="agreement-cont " >
+            <p class="item" >1.可能当前网络环境较差或设备已被他人绑定。</p>
+            <p class="item" >2.请确保手机与设备之间的距离足够近，并且周围网络环境没有强干扰。</p>
+            <p class="item" >3.请确认应用的定位权限未被关闭。若手动关闭了应用定位权限可能会导致无法自动发现设备。 </p>
+            <p class="item" >4.请检查手机蓝牙是否已经打开。</p>
+        </div>
+    </div>
+    <script>
+            function paramsValue(paramName){
+                const searchUrl =  window.location.search.split('?')[1]
+                const searchParams = searchUrl.split('&');
+                const paramsObj = {};
+                searchParams.forEach(param => {
+                    const [key, value] = param.split('=');
+                    paramsObj[key] = value;
+                });
+                const paramValue = paramsObj[paramName];
+                console.log(paramValue)
+                var title = document.getElementsByClassName('agreement-title')[0]
+                var cont = document.getElementsByClassName('agreement-cont')[0]
+
+                title.style.fontSize='calc(16px*'+paramValue+')'
+                cont.style.fontSize='calc(14px*'+paramValue+')'
+            }
+            paramsValue('fontSize')
+         
+    </script>
+</body>
+</html>
