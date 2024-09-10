@@ -5,10 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="agreement-box" >
+        <div class="agreement-title" >使用指南</div>
+        <div class="agreement-cont" >
+
+ 一、首次使用
+1.下载APP
+使用移动智能终端设备扫描下方二维码或在应用市场搜索“九安CGM”，下载并安装APP。
+
+2.注册及登录
+打开“九安CGM”APP，按照页面提示进行注册及登录。
+3.完善个人资料
+首次登录时，会出现设置密码页面，按照页面提示输入即可完成密码设置。密码设置后，会出现完善个人信息界面，按照提示输入基本信息，可立即完善个人信息。
+
+二、添加使用设备
+添加使用设备操作步骤
+1.点击添加设备按钮；
+2.根据APP中的提示开启连接设备所需权限；
+3.根据页面提示正确佩戴监测仪后，点击连接设备按钮；
+4.根据页面提示，与您所佩戴的监测仪序列号进行连接；
+5.成功连接后，监测仪自动进入初始化模式，初始化1小时完成后可在血糖监测模块查看实时葡萄糖读数。
+
+三、主要功能
+1.实时监测
+实时监测模块可查看实时血糖数据和血糖曲线，实时血糖数每分钟更新一次，可自动绘制成连续曲线。
+顶部导航栏：展示APP名称、用户切换功能按钮（如关注亲友）、消息中心按钮
+设备状态栏：展示设备连接相关的信息，帮助用户理解当前的连接状态和帮助用户解决连接的问题
+血糖提醒栏：展示用户正在经历的高低血糖
+设备到期提醒栏：监测仪即将到期时，提醒用户设备到期状态
+实时数据卡片：查看实时血糖数据、血糖变化趋势、达标情况、不同时间段的血糖曲线
+事件记录卡片：添加事件、 展示事件与血糖关系的曲线
+
+2.血糖分析
+血糖分析模块下查看不同周期的数据，点击天数可查看对应周期下统计的血糖指标和血糖分析图表。
+
+3.智能助手
+智能助手模块可通过即时通信（IM）的方式与智能助手进行交流互动，能帮助用户记录事件，满足用户对血糖管控的个性化需求。
+
+
+4.日常记录
+日常记录模块可根据需求记录与日常生活事件，包括饮食、运动、用药、胰岛素、睡眠、指尖血糖值、其他，记录后可点击列表进入分析详情页面。
+
+
+5.个人中心
+个人中心模块为用户提供了高效、全面的账户管理工具和个性化的设置入口。
+个人中心：查看或设置个人基线信息
+我的报告：可查看或导出已生成的血糖报告
+我的设备：可查看设备使用记录、添加新设备
+我的亲友：可关注其他亲友血糖、邀请亲友关注自己血糖
+血糖单位设置：可查看或切换血糖单位
+目标范围设置：可查看或设置目标范围
+血糖提醒设置：可查看或设置高低血糖异常提醒、监测仪提醒、定时勿扰
+字号大小设置：可调整APP的文字大小
+后台运行设置（仅Android）：Android特有设置，可查看或设置后台运行所需的系统权限，能大幅度提升App的后台存活状态
+悬浮球（仅Android）：Android特有设置，可以在所有App上方显示以查看血糖信息。点击悬浮球开关以控制悬浮球显示隐藏
+账号安全：可查看账号、修改密码、注销账号
+使用指南：查看系统产品使用指南
+常见问题：查看常见问题
+帮助中心：支持问题反馈、联系客服功能
+关于APP：查看软件的基本信息、版本更新、隐私协议
+退出登录：退出APP账号的登录
+
+        </div>
+        <div class="agreement-time" >最近更新日期：2024年1月</div>
+    </div>
     <script>
-        window.location.href='https://docs.qq.com/doc/DSXRoQ0JMTklNY3hN'
+            function paramsValue(paramName){
+                const searchUrl =  window.location.search.split('?')[1]
+                const searchParams = searchUrl.split('&');
+                const paramsObj = {};
+                searchParams.forEach(param => {
+                    const [key, value] = param.split('=');
+                    paramsObj[key] = value;
+                });
+                const paramValue = paramsObj[paramName];
+                console.log(paramValue)
+                var title = document.getElementsByClassName('agreement-title')[0]
+                var cont = document.getElementsByClassName('agreement-cont')[0]
+                var agreementTime = document.getElementsByClassName('agreement-time')[0]
+
+                title.style.fontSize='calc(16px*'+paramValue+')'
+                cont.style.fontSize='calc(14px*'+paramValue+')'
+                agreementTime.style.fontSize='calc(14px*'+paramValue+')'
+            }
+            paramsValue('fontSize')
+         
     </script>
 </body>
 </html>

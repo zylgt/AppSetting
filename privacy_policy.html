@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="agreement-box" >
+        <div class="agreement-title" >隐私协议</div>
+        <div class="agreement-cont" >
+            天津九安医疗电子股份有限公司（以下简称为“九安医疗”），本政策内容包括共享、转让、披露个人信息的内容。九安医疗在提供商品或服务的过程中，可能会依据法律法规及本政策收集、存储、使用和保护用户（以下简称为“您”）个人信息。
+
+            请您在使用九安医疗提供的商品和各项服务前，请您务必仔细阅读并透彻理解本政策。如对本政策内容有任何疑问，您可向系统客服咨询。阅读本政策的过程中，如果您不同意本政策或其中任何内容，您应立即停止使用系统服务。当您认可本政策全部内容时，即可使用系统服务。
+
+            当您使九安医疗的客户端或者其他商品或服务时，您在首次阅读、理解并同意本政策之后，可选择后续不再接收本政策提示。本政策在发布之日起隐私政策生效，在与糖永久停止运营或永久停止提供使用之日起隐私政策失效。当本政策因业务功能发生变化须进行实质性修订时，我们会通过推送通知的方式及时向您告知。
+
+            最近更新日期：2024年1月
+            如果您有任何疑问、意见或建议，请通过以下联系方式与我们联系：yutang@ihealthlabs.com.cn 
+
+            本隐私政策将帮助您了解以下内容： 
+            一、我们如何收集和使用您的个人信息 
+            二、我们如何使用 Cookie 和同类技术
+            三、我们如何共享、转让、公开披露您的个人信息
+            四、我们如何保护您的个人信息 
+            五、您的权利 
+            六、我们如何处理未成年的个人信息
+            七、本政策如何更新
+            八、如何联系我们
+
+            一、我们如何收集和使用您的个人信息 
+            个人信息是指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。与糖仅会出于本政策所述的以下目的，收集和使用您的个人信息：
+
+            为实现核心业务功能：
+            1、注册成为用户
+            若您为与糖的用户，为完成创建账号，您需提供电话号码信息。 
+        </div>
+        <div class="agreement-time" >最近更新日期：2024年1月</div>
+    </div>
+    <script>
+            function paramsValue(paramName){
+                const searchUrl =  window.location.search.split('?')[1]
+                const searchParams = searchUrl.split('&');
+                const paramsObj = {};
+                searchParams.forEach(param => {
+                    const [key, value] = param.split('=');
+                    paramsObj[key] = value;
+                });
+                const paramValue = paramsObj[paramName];
+                console.log(paramValue)
+                var title = document.getElementsByClassName('agreement-title')[0]
+                var cont = document.getElementsByClassName('agreement-cont')[0]
+                var agreementTime = document.getElementsByClassName('agreement-time')[0]
+
+                title.style.fontSize='calc(16px*'+paramValue+')'
+                cont.style.fontSize='calc(14px*'+paramValue+')'
+                agreementTime.style.fontSize='calc(14px*'+paramValue+')'
+            }
+            paramsValue('fontSize')
+         
+    </script>
+</body>
+</html>

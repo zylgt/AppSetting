@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family:MiLan-Regular;
-    src:url('font/MI-Lan-Pro_Regular.ttf')  format('truetype');
+    src:url('../font/MI-Lan-Pro_Regular.ttf')  format('truetype');
 }
 html,body{
     padding:0;
@@ -302,4 +302,18 @@ p{
 }
 .font-four-16{
     font-size: calc(16px*2.1);
+}
+.agreement-box{
+    background: #fff;
+    padding:20px;
+}
+.agreement-title{
+    color:#000;
+}
+.agreement-cont{
+    color:#666;
+    padding:20px 0;
+}
+.agreement-time{
+    color:#666;
 }
