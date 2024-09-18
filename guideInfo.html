@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,body{
+            background: #ffffff;
+        }
+        #vue{
+            padding:0 20px;
+            padding-top:10px;
+            padding-bottom:20px;
+        }
+        .guide-info-title{
+            color:#333;
+            margin-bottom:6px;
+        }
+        .guide-info-label{
+            color:#333;
+            margin-bottom:6px;
+        }
+        .guide-info-tips{
+            display: flex;
+            align-items: flex-start;
+            color:#999;
+        }
+        .guide-tips-icon{
+            margin-right:4px;
+        }
+        .guide-img{
+           display: block;
+           margin:30px auto;
+        }
+        .guide-cont-label{
+            color:#333;
+        }
+        .guide-cont-label .guide-cont-special{
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue" > 
+        <div class="guide-info-list" v-for="(item,index) in list" :key="item.id">
+            <div v-if="item.id==id" v-for="items in item.cont" >
+                <div class="guide-info-title" :class="'font-'+fontSize+'-16'">
+                    {{language=='zh'?items.title:items.titleEn}}
+                </div>
+                <div class="guide-info-label" :class="'font-'+fontSize+'-14'">
+                    {{language=='zh'?items.lable:items.labelEn}}
+                </div>
+                <div class="guide-cont-label" :class="'font-'+fontSize+'-14'">
+                    <span class="guide-cont-special">{{language=='zh'?items.contTitle:items.contTitleEn}}</span> {{language=='zh'?items.contLable:items.contLableEn}}
+                </div>
+                <div class="guide-info-tips"  v-if="items.tips" :class="'font-'+fontSize+'-14'">
+                    <img src="img/guide/guide-tips-icon.png" alt="" class="guide-tips-icon">
+                    {{language=='zh'?items.tips:items.tipsEn}}
+                </div>
+                <div v-if="items.img" >
+                    <img :src="items.img" alt="" class="guide-img" v-if="language=='zh'">
+                    <img :src="items.imgEn" alt="" class="guide-img" v-else>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#vue',
+            data:{
+                fontSize:'default',
+                language:'zh',
+                id:4,
+                list:[{
+                    id:1,
+                    cont:[{
+                        title:'1.下载APP',
+                        titleEn:'1.Download App',
+                        lable:'使用移动智能终端设备扫描下方二维码或在应用市场搜索“九安CGM”，下载并安装APP。',
+                        labelEn:'Scan the QR code above or search “iHealth CGM” in the app market, download and install the APP.',
+                        img:'img/guide/guide1-1.png',
+                        imgEn:'img/guide/guide1-1.png'
+                    },{
+                        title:'2.注册及登录',
+                        titleEn:'2.Register and log in',
+                        lable:'打开“九安CGM”APP，按照页面提示进行注册及登录。',
+                        labelEn:'Open the “iHealth CGM” APP, follow the instructions to register or login with your email address.',
+                        img:'img/guide/guide1-2.png',
+                        imgEn:'img/guide/guide1-2.png'
+                    },
+                    {
+                        title:'3.完善个人资料',
+                        titleEn:'3.Complete Profile',
+                        lable:'首次登录时，会出现设置密码页面，按照页面提示输入即可完成密码设置。',
+                        labelEn:'When you login for the first time, you will see the password setting page, follow the instructions on the page to complete the password setting.',
+                        img:'img/guide/guide1-3.png',
+                        imgEn:'img/guide/guide1-3.png'
+                    },{
+                        title:'',
+                        titleEn:'',
+                        lable:'密码设置后，会出现完善个人信息界面，按照提示输入基本信息，可立即完善个人信息',
+                        labelEn:'After setting the password, you will see the profile page, enter the basic information of yourself.',
+                        img:'img/guide/guide1-4.png',
+                        imgEn:'img/guide/guide1-4.png'
+                    }]
+                },
+                {
+                    id:2,
+                    cont:[{
+                        title:'1.选择佩戴部位',
+                        titleEn:'1.Select Site ',
+                        lable:'选择上臂背侧脂肪较多的位置作为佩戴部位。',
+                        labelEn:'Choose a site on the back of your upper arm where has more fat.',
+                        tips:'请避开有疤痕，痣，肿块以及肌肉较多的部位。 所选部位和胰岛素注射部位距离至少间隔2.5cm。',
+                        tipsEn:'Avoid scars, moles, lumps and areas with lots of muscle sites. Selected sites and insulin injection sites are at least 2.5cm apart.',
+                        tipsimg:'',
+                        img:'img/guide/guide2-1.png',
+                        imgEn:'img/guide/guide2-1.png'
+                    },{
+                        title:'2.清洁佩戴位置',
+                        titleEn:'2.Clean and Dry ',
+                        lable:'对佩戴部位进行清洁消毒，等待晾干后进行下一步操作。',
+                        labelEn:'Clean and sterilise the application site and wait for it to air dry.',
+                        img:'img/guide/guide2-2.png',
+                        imgEn:'img/guide/guide2-2.png'
+                    },
+                    {
+                        title:'3.打开助针器',
+                        titleEn:'3.Unscrew Cap ',
+                        lable:'根据助针器上标签指示方向旋转拧开助针器底盖。',
+                        labelEn:'Unscrew the Cap from the sensor applicator.',
+                        tips:'打开助针器底盖后请勿将底盖盖回，这可能损坏助针器。佩戴前，请勿向下按压助针器，以免误触发。',
+                        tipsEn:'Please use promptly after opening the package. Do NOT put cap back on after open it, it may damage the sensor. Do NOT push down the applicator before insert to avoid mistaken triggering.',
+                        img:'img/guide/guide2-3.png',
+                        imgEn:'img/guide/guide2-3.png'
+                    },{
+                        title:'4.佩戴监测仪',
+                        titleEn:'4.Insert Sensor ',
+                        lable:'将助针器开口处对准佩戴部位并贴紧，用力按下助针器。听到“哒”的一声后，表明佩带成功。',
+                        labelEn:'Hold the applicator over the site and push down firmly to insert the sensor. When you hear a “click” sound, it means insert was successful.',
+                        tips:'佩戴完成后，等待5秒后轻轻移开助针器。',
+                        tipsEn:'Then wait 5 seconds to make sure the sensor stick to the skin.',
+                        img:'img/guide/guide2-4.png',
+                        imgEn:'img/guide/guide2-4.png'
+                    },{
+                        title:'5.贴紧胶布边缘',
+                        titleEn:'5.Secure Sensor',
+                        lable:'用手按压监测仪胶布边缘，确保胶布与皮肤粘贴牢固。',
+                        labelEn:' Press around the patch of the sensor, ensure the sensor is securely attached to skin.',
+                        tips:'',
+                        tipsEn:'',
+                        img:'img/guide/guide2-5.png',
+                        imgEn:'img/guide/guide2-5.png'
+                    }]
+                },
+                {
+                    id:3,
+                    cont:[{
+                        title:'1.点击【添加设备】；',
+                        titleEn:'1.Tap “Start New Sensor”',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide3-1.png',
+                        imgEn:'img/guide/guide3-1.png'
+                    },{
+                        title:'2.根据APP中的提示开启连接设备所需权限；',
+                        titleEn:'2.Enable the required permissions to connect to the sensor according to the prompts in the APP',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide3-2.png',
+                        imgEn:'img/guide/guide3-2.png'
+                    },
+                    {
+                        title:'3.根据页面提示正确佩戴监测仪后，点击【连接设备】；',
+                        titleEn:'3. After applying the sensor, tap “Pair Sensor”.',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide3-3.png',
+                        imgEn:'img/guide/guide3-3.png'
+                    },{
+                        title:'4.根据页面提示，点击与您的监测仪一致的序列号进行连接；',
+                        titleEn:'4. Follow the page prompts and pair the sensor by tapping on the serial number that matches your sensor;',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide3-4.png',
+                        imgEn:'img/guide/guide3-4.png'
+                    },{
+                        title:'5.成功连接后，监测仪自动进入初始化模式，初始化1小时完成后可在血糖监测模块查看实时葡萄糖读数',
+                        titleEn:'5. After 60 minutes warm-up, you can view your real-time blood glucose data via the app for the next 15 days.',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide3-5.png',
+                        imgEn:'img/guide/guide3-5.png'
+                    }]
+                },
+                {
+                    id:4,
+                    cont:[{
+                        title:'',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide4-1.png',
+                        imgEn:'img/guide/guide4-1.png'
+                    },{
+                        title:'停用设备后，可以自行沿胶布取下监测仪，用凡士林擦拭揭下处皮肤，有严重过敏症状者，建议咨询医生。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'',
+                        imgEn:''
+                    }]
+                },
+                {
+                    id:5,
+                    cont:[{
+                        title:'1.监测仪佩戴15天正常到期后，将自动断开连接。您可以直接添加新设备。',
+                        titleEn:'1.Download App',
+                        lable:'',
+                        labelEn:'',
+                        img:'',
+                        imgEn:''
+                    },{
+                        title:'2.在监测仪未到期前，若出现故障需要更换监测仪，您需要手动断开监测仪连接。在【个人中心-我的设备】中选择使用中的监测仪。',
+                        titleEn:'2.Register and log in',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide5-1.png',
+                        imgEn:'img/guide/guide5-1.png'
+                    },{
+                        title:'点击【停用设备】并确认停用，之后您可以在APP首页添加新设备。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide5-2.png',
+                        imgEn:'img/guide/guide5-2.png'
+                    }]
+                },
+                {
+                    id:6,
+                    cont:[{
+                        title:'您可以在APP主页实时监测模块查看实时血糖数据和血糖曲线，实时血糖数每分钟更新一次，将自动绘制成连续曲线。',
+                        titleEn:'1.Download App',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide6-1.png',
+                        imgEn:'img/guide/guide6-1.png'
+                    },{
+                        contTitle:'1.当前血糖值：',
+                        contLable:'显示您最近时间的血糖读数。监测仪的测量范围为2-30mmol/L，当低于或超出测量范围，当前血糖值将显示过低或过高。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'2.血糖趋势箭头：',
+                        contLable:'显示您目前的血糖变化趋势。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'3.目标范围内时间：',
+                        contLable:'显示您过去几个小时的血糖值在目标范围内的时间占比。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'4.血糖图表：',
+                        contLable:'显示您过去几个小时的血糖变化。点击曲线可以查看对应时间点的血糖值。图中蓝色区域为目标血糖值，目标血糖值可以在个人中心进行设置。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'5.切换横屏：',
+                        contLable:'点击切换横屏显示。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                        img:'img/guide/guide6-2.png',
+                        imgEn:'img/guide/guide6-2.png',
+                        lable:'横屏显示',
+                        labelEn:'',
+                    },{
+                        contTitle:'6.切换时间：',
+                        contLable:'点击切换显示最近3，6，12，24小时血糖曲线。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'7.昨日血糖对比：',
+                        contLable:'点击开启后将在血糖图表中显示昨日的血糖曲线。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },]
+                },
+                {
+                    id:7,
+                    cont:[{
+                        title:'您可以在血糖分析中查看不同周期的数据，点击天数可查看对应周期下统计的血糖指标和血糖分析图表。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide7-1.png',
+                        imgEn:'img/guide/guide7-1.png'
+                    },{
+                        contTitle:'',
+                        contLable:'1.当您一天内的血糖值在目标范围内的时间超过70%时(老年人超过50%时)，当日血糖分析将显示达标，当低于70%时(老年人低于50%时)，当日血糖分析显示需关注。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'',
+                        contLable:'2.点击血糖分析右上角“?”，可查看解释及推荐控制目标值。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    }]
+                },
+                {
+                    id:8,
+                    cont:[{
+                        title:'点击底部导航栏【智能助手】进入智能助手界面。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide8-1.png',
+                        imgEn:'img/guide/guide8-1.png'
+                    },{
+                        title:'您可以通过文字输入或语音和智能助手进行交流互动。它能可以帮助您记录事件，分析血糖变化情况，回答血糖相关问题，满足您对血糖管控的个性化需求。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'',
+                        imgEn:''
+                    },]
+                },
+                {
+                    id:9,
+                    cont:[{
+                        title:'您可以根据需求在APP主页【添加事件】及日常记录页面记录与日常生活事件，包括饮食、运动、用药、胰岛素、睡眠、指尖血糖值、其他。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'img/guide/guide9-1.png',
+                        imgEn:'img/guide/guide9-1.png'
+                    },{
+                        title:'完成记录后，您所记录的事件将显示在日常记录中，点击对应事件可进入分析详情页面。与血糖相关的事件将显示在APP主页。',
+                        titleEn:'',
+                        lable:'',
+                        labelEn:'',
+                        img:'',
+                        imgEn:''
+                    },]
+                },
+                {
+                    id:10,
+                    cont:[{
+                        title:'',
+                        titleEn:'',
+                        lable:'您可以在个人中心页面进行账户管理和个性化设置。',
+                        labelEn:'',
+                        img:'img/guide/guide10-2.png',
+                        imgEn:'img/guide/guide10-2.png'
+                    },{
+                        contTitle:'1.我的报告：查看或导出已生成的血糖报告。',
+                        contLable:'查看或导出已生成的血糖报告。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'2.我的设备：',
+                        contLable:'可查看设备使用记录。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'3.我的亲友：',
+                        contLable:'可关注其他亲友血糖、邀请亲友关注自己血糖。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'4.血糖单位设置：',
+                        contLable:'查看或切换血糖单位。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'5.目标范围设置：',
+                        contLable:'查看或设置目标范围。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'6.血糖提醒设置：',
+                        contLable:'可查看或设置高低血糖异常提醒、监测仪提醒、定时勿扰。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'7.字号大小设置：',
+                        contLable:'调整APP内的文字大小。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'8.后台运行设置：',
+                        contLable:'查看或设置后台运行所需的系统权限，让APP可以一直在手机后台运行。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'9.悬浮球：',
+                        contLable:'开启后可以在所有App上方显示用于查看血糖信息。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'10.账号安全：',
+                        contLable:'查看账号、修改密码、注销账号。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'11.使用指南：',
+                        contLable:'查看监测仪和APP的使用指南。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'12.常见问题：',
+                        contLable:'查看使用中的常见问题。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'13.帮助中心：',
+                        contLable:'当您在使用时遇到问题，可以在帮助中心进行问题反馈、联系客服。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'14.关于APP：',
+                        contLable:'查看软件的基本信息、版本更新、隐私协议。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'15.退出登录：',
+                        contLable:'退出APP账号的登录，退出账号后无法再实时接收血糖信息。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    }]
+                },{
+                    id:11,
+                    cont:[{
+                        title:'',
+                        titleEn:'',
+                        lable:'您可以在个人中心页面进行账户管理和个性化设置。',
+                        labelEn:'',
+                        img:'img/guide/guide10-1.png',
+                        imgEn:'img/guide/guide10-1.png'
+                    },{
+                        contTitle:'1.我的报告：查看或导出已生成的血糖报告。',
+                        contLable:'查看或导出已生成的血糖报告。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'2.我的设备：',
+                        contLable:'可查看设备使用记录。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'3.我的亲友：',
+                        contLable:'可关注其他亲友血糖、邀请亲友关注自己血糖。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'4.血糖单位设置：',
+                        contLable:'查看或切换血糖单位。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'5.目标范围设置：',
+                        contLable:'查看或设置目标范围。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'6.血糖提醒设置：',
+                        contLable:'可查看或设置高低血糖异常提醒、监测仪提醒、定时勿扰。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'7.字号大小设置：',
+                        contLable:'调整APP内的文字大小。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'8.账号安全：',
+                        contLable:'查看账号、修改密码、注销账号。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'9.使用指南：',
+                        contLable:'查看监测仪和APP的使用指南。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'10.常见问题：',
+                        contLable:'查看使用中的常见问题。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'11.帮助中心：',
+                        contLable:'当您在使用时遇到问题，可以在帮助中心进行问题反馈、联系客服。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'12.关于APP：',
+                        contLable:'查看软件的基本信息、版本更新、隐私协议。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    },{
+                        contTitle:'13.退出登录：',
+                        contLable:'退出APP账号的登录，退出账号后无法再实时接收血糖信息。',
+                        contTitleEn:'',
+                        contLableEn:'',
+                    }]
+                },]
+            },
+            mounted(){
+                let that = this
+                this.$nextTick(()=>{
+                    window.addEventListener('message', function(e) {
+                        console.log(e)
+                        // that.setLog("接收到rn的消息:"+e.data)
+                        let data = JSON.parse(e.data)
+                        if(data.fontSize){
+                            if(data.fontSize==1){
+                                that.fontSize = 'default'
+                            }else if(data.fontSize==1.28){
+                                that.fontSize = 'two'
+                            }else if(data.fontSize==1.57){
+                                that.fontSize = 'three'
+                            }else if(data.fontSize==2.1){
+                                that.fontSize = 'four'
+                            }
+                        }
+                        if(data.language){
+                            that.language = data.language
+                        }
+                        if(data.id){
+                            that.id=data.id
+                        }
+                    },false)
+                })
+            },
+            methods: {
+                back(){
+                    let obj = {key:'FeedBack'}
+                    window.ReactNativeWebView.postMessage(JSON.stringify(obj))
+                }
+            },
+        })
+    </script>
+</body>
+</html>
